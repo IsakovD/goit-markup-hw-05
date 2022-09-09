@@ -173,8 +173,10 @@ button {
 .link.current {
 	position: relative;
 	color: var(--accent-color);
+	overflow: hidden;
 }
 
+/* Анимация подчеркивания */
 .link.current::after {
 	display: block;
 	content: "";
@@ -185,8 +187,23 @@ button {
 
 	border-radius: 2px;
 	background-color: var(--accent-color);
-	/* transform: scaleX(0);
-	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+
+	animation-name: underline-in;
+	animation-duration: 250ms;
+	animation-timing-function: linear;
+	animation-delay: 100ms;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+@keyframes underline-in {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 .visually-hidden {
